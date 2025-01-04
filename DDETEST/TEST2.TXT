@@ -1,0 +1,37 @@
+This file documents the awe32Check() function. It can be found in
+the independent AWECHECK.OBJ module.
+
+
+IMPORTANT: If auto-detection is needed, developers are advised to use
+the function to detect the presence of the EMU8000 wavetable engine.
+This is because the base I/O address of EMU8000 is no longer guaranteed
+to be at 0x400 offfset to the 0x2X0 SoundBlaster 16 base address.
+
+
+The prototype of the function is as follow:
+
+    WORD
+    PASCAL awe32Check(WORD   wBaseAddx,
+                      DWORD* pdwRomId,
+                      DWORD* pdwRomVer,
+                      DWORD* pdwDramSize)
+
+    where
+    1. wBaseAddx refers to the base I/O address of EMU8000
+    2. pdwRomId is a pointer to a DWORD where ROM ID will be stored
+    3. pdwRomVer is a pointer to a DWORD where ROM version number
+       will be stored
+    4. pdwDramSize is a pointer to a DWORD where the size of all
+       available RAM will be stored
+
+The function detects the presence of EMU8000, gets the ROM ID & ROM
+version number, and detects the available RAM. If the EMU8000 is
+present awe32Check returns zero. Current SB AWE32's ROM ID is
+0x4d474d31 and ROM version is 0x20008. The supplied presets (EMBED.OBJ),
+is made specifically for this ROM ID only. The RAM size is in term of
+the number of 16bit samples.
+
+The ROM ID and ROM version number are provided for information purposes
+only. Applications should not rely on them for their thread of
+executions.
+

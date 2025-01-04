@@ -1,0 +1,18 @@
+TRMENU MENU 
+{
+ 	POPUP "&Команды"
+ 	{
+		MENUITEM "&Описание", 101
+		MENUITEM "&Помощь", 102
+ 	}
+	MENUITEM "&Выход", 103, HELP
+}
+
+TRICON ICON favicon.ico
+data1 DESCRIPTTR description.txt
+
+ACCEL Accelerators
+{
+  	"Q", 101, VIRTKEY
+  	"X", 103, VIRTKEY, ALT
+}
